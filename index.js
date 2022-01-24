@@ -1,6 +1,7 @@
 const wordsDiv = document.getElementById("words")
 const statusLabel = document.getElementById("statusLabel")
-originURL = location.origin
+const bodyElem = document.getElementById("bodyElem")
+const originURL = location.origin
 
 axios({
     method: 'get',
@@ -15,7 +16,12 @@ axios({
         keys.forEach((key, index) => {
             const paraElem = document.createElement('p')
             paraElem.innerText = key
-            wordsDiv.appendChild(paraElem)
+            const anchorElem = document.createElement('a')
+            anchorElem.href = `${originURL}/word/${key}`
+            anchorElem.appendChild(paraElem)
+            wordsDiv.innerHTML = ""
+            bodyElem.removeChild(statusLabel)
+            wordsDiv.appendChild(anchorElem)
         })
     } else {
         statusLabel.innerHTML = "An error occurred in loading words. Check console for more information."

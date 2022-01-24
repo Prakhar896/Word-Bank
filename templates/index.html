@@ -7,15 +7,18 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js">
         </script>
         <title>Word Bank Home</title>
+        <style>
+            body {
+                padding-left: 10px;
+            }
+        </style>
     </head>
-    <body>
+    <body id="bodyElem">
         <h1>Welcome to Word Bank!</h1>
         <p>All stored words are listed below.</p>
-        <p>---</p>
-        <br>
         <p id="statusLabel">Loading words...</p>
-        <div id="words">
-        </div>
+        <p>---</p>
+        <div id="words"></div>
         <script src="/assets/indexJS"></script>
     </body>
 </html>
