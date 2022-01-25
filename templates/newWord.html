@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/axios/dist/axios.min.js">
+    </script>
+    <title>Add word to Word Bank</title>
+    <!-- <style>
+            body {
+                padding-left: 10px;
+            }
+        </style> -->
+    <script src="/assets/newWordJS"></script>
+</head>
+
+<body>
+    <h1>Add a New Word</h1>
+    <p>Enter the word itself, its meaning, a sentence with it and synonyms to add the the word.</p>
+    <br>
+    <label for="wordName">Enter word:</label><br>
+    <input type="text" id="wordNameField" value=""><br>
+    <br>
+    <label for="wordDef">Enter word's meaning:</label><br>
+    <input type="text" id="wordDefinitionField" value=""><br>
+    <br>
+    <label for="wordSyn">Enter synonyms of the word (preferrably comma-separated):</label><br>
+    <input type="text" id="wordSynField" value=""><br>
+    <br>
+    <label for="wordSen">Enter a sentence with the word:</label><br>
+    <input type="text" id="wordSenField" value=""><br>
+    <br>
+    <button onclick="makeWord()">Add Word</button>
+</body>
+
+</html>

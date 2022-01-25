@@ -20,6 +20,10 @@ words = json.load(open('words.txt', 'r'))
 def home():
     return render_template('index.html')
 
+@app.route('/newWord')
+def makeNewWord():
+    return render_template('newWord.html')
+
 @app.route('/word/<wordName>')
 def showWordDetails(wordName):
     wordData = {}
@@ -37,6 +41,10 @@ def getWords():
 @app.route('/assets/indexJS')
 def indexJS():
     return fileContent('index.js')
+
+@app.route('/assets/newWordJS')
+def newWordJS():
+    return fileContent('newWord.js')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8000)
