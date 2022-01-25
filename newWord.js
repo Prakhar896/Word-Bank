@@ -19,4 +19,12 @@ function makeWord() {
         },
         url: `${location.origin}/api/newWord`
     })
+    .then(response => {
+        if (response.status == 200 && !response.data.startsWith("ERROR:")) {
+            location = `${location.origin}`
+        } else {
+            alert(response.data)
+            console.log(response.data)
+        }
+    })
 }

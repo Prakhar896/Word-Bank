@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 from flask_cors import CORS
 import json, os, subprocess, shutil, sys
 
@@ -37,6 +37,26 @@ def showWordDetails(wordName):
 @app.route('/api/getWords', methods=['GET'])
 def getWords():
     return json.dumps(words)
+
+@app.route('/api/newWord', methods=['POST'])
+def newWord():
+    for item in ['wordName', 'wordMeaning', 'wordSyn', 'wordSen']:
+        if item not in request.json:
+            return "ERROR: {} field was not present in request. Request failed.".format(item)
+
+    wordName = request.json['wordName']
+    meaning = request.json['wordMeaning']
+    syn = request.json['wordSyn']
+    sen = request.json['wordSen']
+    words[wordName] = {
+        'meaning': meaning,
+        'syn': syn,
+        'sen': sen,
+    }
+
+    json.dump(words, open('words.txt', 'w'))
+    return "Added new word successfully!"
+
 
 @app.route('/assets/indexJS')
 def indexJS():
