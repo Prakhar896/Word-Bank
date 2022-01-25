@@ -20,6 +20,16 @@ words = json.load(open('words.txt', 'r'))
 def home():
     return render_template('index.html')
 
+@app.route('/word/<wordName>')
+def showWordDetails(wordName):
+    wordData = {}
+    for word in words:
+        if word == wordName:
+            wordData = words[word]
+            break
+
+    return render_template('wordDetail.html', wordName=wordName, wordData=wordData)
+
 @app.route('/api/getWords', methods=['GET'])
 def getWords():
     return json.dumps(words)
