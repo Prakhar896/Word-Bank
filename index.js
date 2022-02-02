@@ -24,7 +24,7 @@ axios({
                     anchorElem.href = `${originURL}/word/${key}`
 
                     const paraElem = document.createElement("p")
-                    paraElem.innerHTML = key
+                    paraElem.innerHTML = `${key} - ${response.data[key].meaning}`
 
                     anchorElem.appendChild(paraElem)
                     wordsDiv.appendChild(anchorElem)
