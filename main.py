@@ -65,7 +65,7 @@ def deleteWord():
         return "No such word is in database. Request failed."
     
     del words[request.json['wordToDelete']]
-    json.dump(words, open('word.txt', 'w'))
+    json.dump(words, open('words.txt', 'w'))
 
     return "Successfully deleted word {}!".format(request.json['wordToDelete'])
 
