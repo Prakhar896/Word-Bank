@@ -57,6 +57,17 @@ def newWord():
     json.dump(words, open('words.txt', 'w'))
     return "Added new word successfully!"
 
+@app.route('/api/deleteWord', methods=['POST'])
+def deleteWord():
+    if 'wordToDelete' not in request.json:
+        return "No wordToDelete field was present in request. REQUEST FAILED."
+    if request.json['wordToDelete'] not in words:
+        return "No such word is in database. Request failed."
+    
+    del words[request.json['wordToDelete']]
+    json.dump(words, open('word.txt', 'w'))
+
+    return "Successfully deleted word {}!".format(request.json['wordToDelete'])
 
 @app.route('/assets/indexJS')
 def indexJS():
